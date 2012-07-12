@@ -138,144 +138,46 @@
 <div class="art-post-inner art-article">
                                 <div class="art-postmetadataheader">
                                         <h2 class="art-postheader">
-                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Insertar
+                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Consulta
                                         </h2>
                     <div class="cleared"></div>
                                     </div>
                                 <div class="art-postcontent">
-<!-- Accordion -->
-	
-		
-			
-		<div id="accordion">
-			<div>
-				<h3><a href="#">OPCIONES</a></h3>
-					<div><br /> <br /> <br><center>Al seleccionar el una opcion podra insertar distinta informacion</div>
-			</div>
-			<div>
-				<h3><a href="#">INSERTA EMPLEADO</a></h3>
-				<div>
-				<br /><br /><form method="post" action="insertar_empleado.php" id="from1" name="from1">
-	<center>
-	
-	
-	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
-	<tr>
-			<td><center>Nombre</td>
-			<td><center><input type="text" id="mombre_empleado" name="nombre_empleado" /></td>
-			<td><center>Apellido</td>
-			<td><center><input type="text" id="apellido_empleado" name="apellido_empleado" /></td>
-			<td><center>Cedula</td>
-			<td><center><input type="text" id="cedula" name="cedula" /></td>
-			
-			
-	</tr>
-	<tr>	
-			<td><center>Horario</td>
-			<td><center><input type="text" id="horario" name="horario" /></td>
-			<td><center>Cargo</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
-			<td><center>foto</td>
-			<td><center><input type="file" id="archivo" name="archivo" /></td>
-			
-	</tr>
-	</table>
-	
-	
-				
-				
-				<br />
-				<input name="submit" type="submit" value="Guardar">
-				
-				</form>
-				</div>
-			</div>
-			<div>
-				<h3><a href="#">INSERTA EQUIPO</a></h3>
-				<div><br /><br /><form method="post" action="insertar_empleado.php" id="from2" name="from2">
-	<center>
-	
-	
-	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
-	<tr>
-			<td><center>Nombre</td>
-			<td><center><input type="text" id="mombre_equipo" name="nombre_empleado" /></td>
-			<td><center>Codigo</td>
-			<td><center><input type="text" id="codigo" name="codigo" /></td>
-			<td><center>Marca</td>
-			<td><center><input type="text" id="cedula" name="cedula" /></td>
-			
-			
-	</tr>
-	<tr>	
-			<td><center>Modelo</td>
-			<td><center><input type="text" id="horario" name="horario" /></td>
-			<td><center>Cantidad</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
-			<td><center>foto</td>
-			<td><center><input type="file" id="archivo" name="archivo" /></td>
-			
-	</tr>
-	</table>
-	
-	
-				
-				
-				<br />
-				<input name="submit" type="submit" value="Guardar">
-				
-				</form></div>
-			</div>
-			<div>
-				<h3><a href="#">INSERTA PIEZAS</a></h3>
-				<div><br /><br /><form method="post" action="insertar_empleado.php" id="from3" name="from3">
-	<center>
-	
-	
-	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
-	<tr>
-			<td><center>Equipo</td>
-			<td><center><input type="text" id="mombre_equipo" name="nombre_empleado" /></td>
-			<td><center>Pieza</td>
-			<td><center><input type="text" id="cedula" name="cedula" /></td>
-			<td><center>Codigo</td>
-			<td><center><input type="text" id="codigo" name="codigo" /></td>
-	</tr>
-	<tr>	
-			<td><center>Marca</td>
-			<td><center><input type="text" id="horario" name="horario" /></td>
-			<td><center>Modelo</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
-			<td><center>Cantidad</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
-	</tr>
-		<tr>	
-			<td><center>Descripcion</td>
-			<td colspan="2"><center>
-			  <textarea name="descripcion" cols="20" id="descripcion"></textarea>
-			  </td>
-			<td><center></td>
-			<td><center>Composicion</td>
-			<td><center><textarea name="composicion" id="composicion" cols="20"></textarea>
-	</tr>
-	</table>
-	
-	
-				
-				
-				<br />
-				<input name="submit" type="submit" value="Guardar">
-				
-				</form></div>
-			</div>
-			<div>
-				<h3><a href="#">CREAR ODT</a></h3>
-				<div>Nam dui erat, auctor a, dignissim quis.</div>
-			</div>
-		</div>
-		
 
-
+	<form method="post" action="" name="form" id="form">
+	<br /><br /><br /><center>
+	<table width="500" align="center" border="2" bordercolor="#999966">
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><br /><center><img src="images/personas.gif" width="200" height="200"/><center>Empleado</td>
+			<td>&nbsp;</td>
+		<td><br /><center><img src="images/gif-picture-search-i1.gif" width="200" height="200" /><center>Empleado</td>	
+		<td><br /><center>&nbsp;<br /><br /></td>
+	</tr>
+	<tr>
+		<td><br /><br /><br /></td>
+		<td><center><img src="images/windows-desktop-search.gif" width="200" height="200" /><center>Piezas</td>
+			<td><br /><br /><br /></td>
+		<td><center><img src="images/El Orden.gif" width="200" height="200" /><center>Orden de trabajo</td>
+		<td><br /><center>&nbsp;<br /><br /></td>
+	</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>
+	</tr>
+	</table>
+	
+	</form>
                 </div>
                 <div class="cleared"></div>
                 </div>
