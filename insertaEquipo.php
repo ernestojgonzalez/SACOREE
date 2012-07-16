@@ -77,8 +77,69 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<center><p>SISTEMA AUTOMATIZADO CREADO CON LA FINALIDAD DE OPTIMIZA LOS PROCESOS EN EL REGISTRO DEL PERSONAL Y REGISTRO DE EQUIPOS.</p>
-<center><img src="images/Dibujo.bmp" />
+<?php
+// declaracion de variables
+
+$num_reg=$_POST['num_reg'];
+$nombre=$_POST['nombre'];
+$codigo=$_POST['codigo'];
+$modelo=$_POST['modelo'];
+$marca=$_POST['marca'];
+$cantidad=$_POST['cantidad'];
+$titulo=$nombre.$codigo;
+$nro_fil = 0;
+
+include "coneccionbasedatosmysql.inc";
+$enlace =conectarbase();
+// $enlace se iguala a la funcion cenectarbase()
+
+
+//tomo el valor de un elemento de tipo texto del formulario "$num_reg"
+ $nombre_archivo2 = $nombre.$codigo.".jpeg";
+//datos del arhivo
+ $nombre_archivo = $_FILES['archivo']['name'];
+ $tipo_archivo = $_FILES['archivo']['type'];
+ $tamano_archivo = $_FILES['archivo']['size'];
+//compruebo si las características del archivo son las que deseo
+if (!((strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000000)))
+{
+	echo "<center>La extensión no es correcta. <br><br>ERROR ! formato invalido solo se acepta imagenes .jpg unicamente<br></br><br></br>";
+}
+else
+{
+// funcion para almacenar el archivo en el servidor
+   if (move_uploaded_file($_FILES['archivo']['tmp_name'], "rutas/$nombre_archivo2"))
+   {
+      echo "<BR><strong><center>Datos Correctos</center></strong><BR>";
+      if($nro_fil == 0)
+           {
+             $ruta = "rutas/$nombre_archivo2";
+			 
+			 
+			 //COLOCA CONTENIDO EN MAYUSCULA
+
+
+$nombre=strtoupper($nombre);
+$codigo=strtoupper($codigo);
+$modelo=strtoupper($modelo);
+$titulo=strtoupper($titulo);
+$marca=strtoupper($marca);
+
+
+
+
+// funcion para insertar los ddatos en la tabla informe
+             $Insertar= "INSERT INTO equipo VALUES('$codigo','$nombre','$modelo','$marca','$cantidad','$ruta','$titulo',NULL)";
+             $resultadoins=basedatos($Insertar);
+             echo "<tr><td><BR><strong><center> El equipo $nombre fue almacenado satisfactoriamente    </center></strong><BR></td></tr>";
+           }
+       mysql_close ($enlace);
+   }else
+    {
+      echo "Ocurrió algún error. No pudo guardarse.";
+    }
+}
+?>
 <!-- empieza el formulario    -->
 
                 </div>

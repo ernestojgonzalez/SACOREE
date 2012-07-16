@@ -6,7 +6,7 @@
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Inicio</title>
+    <title>REGISTRO</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -77,8 +77,37 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<center><p>SISTEMA AUTOMATIZADO CREADO CON LA FINALIDAD DE OPTIMIZA LOS PROCESOS EN EL REGISTRO DEL PERSONAL Y REGISTRO DE EQUIPOS.</p>
-<center><img src="images/Dibujo.bmp" />
+<?php 
+$id_parte_pieza=$_POST['id_parte_pieza'];
+$nombre_equipo=$_POST['nombre'];
+$pieza=$_POST['pieza'];
+$marca=$_POST['marca'];
+$codigoPieza=$_POST['codigoPieza'];
+$modelo=$_POST['modelo'];
+$cantidadPieza=$_POST['cantidadPieza'];
+$descripcion=$_POST['descripcion'];
+$composicion=$_POST['composicion'];
+
+
+
+include "coneccionbasedatosmysql.inc";
+$enlace =conectarbase();
+// $enlace se iguala a la funcion cenectarbase()
+$nombre_equipo=strtoupper($nombre_equipo);
+//$nombre_parte=strtoupper($nombre_parte);
+$codigoPieza=strtoupper($codigoPieza);
+$pieza=strtoupper($pieza);
+$marca=strtoupper($marca);
+$modelo=strtoupper($modelo);
+$descripcion=strtoupper($descripcion);
+$composicion=strtoupper($composicion);
+
+             $Insertar= "INSERT INTO piezas VALUES('NULL','$nombre_equipo','$pieza','codigoPieza','$marca','$modelo','$cantidadPieza','$descripcion','$composicion')";
+             $resultadoins=basedatos($Insertar);
+             echo "<tr><td><BR><p><strong><center>La Información fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
+   
+       mysql_close ($enlace);
+   ?>
 <!-- empieza el formulario    -->
 
                 </div>

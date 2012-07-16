@@ -155,16 +155,16 @@
 			<div>
 				<h3><a href="#">INSERTA EMPLEADO</a></h3>
 				<div>
-				<br /><br /><form method="post" action="insertar_empleado.php" id="from1" name="from1">
+				<br /><br /><form method="post" enctype="multipart/form-data" action="insertaPersonal.php" id="from1" name="from1">
 	<center>
 	
 	
 	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
 			<td><center>Nombre</td>
-			<td><center><input type="text" id="mombre_empleado" name="nombre_empleado" /></td>
+			<td><center><input type="text" id="mombre" name="nombre" /></td>
 			<td><center>Apellido</td>
-			<td><center><input type="text" id="apellido_empleado" name="apellido_empleado" /></td>
+			<td><center><input type="text" id="apellido" name="apellido" /></td>
 			<td><center>Cedula</td>
 			<td><center><input type="text" id="cedula" name="cedula" /></td>
 			
@@ -176,7 +176,7 @@
 			<td><center>Cargo</td>
 			<td><center><input type="text" id="cargo" name="cargo" /></td>
 			<td><center>foto</td>
-			<td><center><input type="file" id="archivo" name="archivo" /></td>
+			<td><center><input type="hidden" id="titulo" name="titulo" >     <input type="file" size="20" name="archivo" id="archivo"></td>
 			
 	</tr>
 	</table>
@@ -192,28 +192,28 @@
 			</div>
 			<div>
 				<h3><a href="#">INSERTA EQUIPO</a></h3>
-				<div><br /><br /><form method="post" action="insertar_empleado.php" id="from2" name="from2">
+				<div><br /><br /><form method="post" enctype="multipart/form-data" action="insertaEquipo.php" id="from2" name="from2">
 	<center>
 	
 	
 	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
 			<td><center>Nombre</td>
-			<td><center><input type="text" id="mombre_equipo" name="nombre_empleado" /></td>
+			<td><center><input type="text" id="mombre" name="nombre" /></td>
 			<td><center>Codigo</td>
 			<td><center><input type="text" id="codigo" name="codigo" /></td>
 			<td><center>Marca</td>
-			<td><center><input type="text" id="cedula" name="cedula" /></td>
+			<td><center><input type="text" id="marca" name="marca" /></td>
 			
 			
 	</tr>
 	<tr>	
 			<td><center>Modelo</td>
-			<td><center><input type="text" id="horario" name="horario" /></td>
+			<td><center><input type="text" id="modelo" name="modelo" /></td>
 			<td><center>Cantidad</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
+			<td><center><input type="text" id="cantidad" name="cantidad" /></td>
 			<td><center>foto</td>
-			<td><center><input type="file" id="archivo" name="archivo" /></td>
+			<td><center><input type="hidden" id="num_reg" name="num_reg" /><input type="hidden" id="titulo" name="titulo" /><input type="file" id="archivo" name="archivo" /></td>
 			
 	</tr>
 	</table>
@@ -228,26 +228,26 @@
 			</div>
 			<div>
 				<h3><a href="#">INSERTA PIEZAS</a></h3>
-				<div><br /><br /><form method="post" action="insertar_empleado.php" id="from3" name="from3">
+				<div><br /><br /><form method="post"enctype="multipart/form-data"  action="insertaPieza.php" id="from3" name="from3">
 	<center>
 	
 	
 	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
 			<td><center>Equipo</td>
-			<td><center><input type="text" id="mombre_equipo" name="nombre_empleado" /></td>
+			<td><center><input type="text" id="nombre" name="nombre" /></td>
 			<td><center>Pieza</td>
-			<td><center><input type="text" id="cedula" name="cedula" /></td>
+			<td><center><input type="text" id="pieza" name="pieza" /></td>
 			<td><center>Codigo</td>
-			<td><center><input type="text" id="codigo" name="codigo" /></td>
+			<td><center><input type="text" id="codigoPieza" name="codigoPieza" /></td>
 	</tr>
 	<tr>	
 			<td><center>Marca</td>
-			<td><center><input type="text" id="horario" name="horario" /></td>
+			<td><center><input type="text" id="marca" name="marca" /></td>
 			<td><center>Modelo</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
+			<td><center><input type="text" id="modelo" name="modelo" /></td>
 			<td><center>Cantidad</td>
-			<td><center><input type="text" id="cargo" name="cargo" /></td>
+			<td><center><input type="text" id="cantidadPieza" name="cantidadPieza" /></td>
 	</tr>
 		<tr>	
 			<td><center>Descripcion</td>
@@ -264,6 +264,7 @@
 				
 				
 				<br />
+				<input type="hidden" id="id_parte_pieza" name="id_parte_pieza">
 				<input name="submit" type="submit" value="Guardar">
 				
 				</form></div>
