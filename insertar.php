@@ -228,7 +228,7 @@
 			</div>
 			<div>
 				<h3><a href="#">INSERTA PIEZAS</a></h3>
-				<div><br /><br /><form method="post"enctype="multipart/form-data"  action="insertaPieza.php" id="from3" name="from3">
+				<div><form method="post"enctype="multipart/form-data"  action="insertaPieza.php" id="from3" name="from3">
 	<center>
 	
 	
@@ -271,7 +271,38 @@
 			</div>
 			<div>
 				<h3><a href="#">CREAR ODT</a></h3>
-				<div>Nam dui erat, auctor a, dignissim quis.</div>
+				<div><form method="post" enctype="multipart/form-data"  action="insertaOrden.php" id="from4" name="from4">
+	<center>
+	
+
+	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
+	<tr>
+			<td><center>Empleado</td>
+			<td><center><input type="text" id="empleado" name="empleado" /></td>
+			<td><center>Equipo</td>
+			<td><center><input type="text" id="equipo" name="equipo" /></td>
+	</tr>
+	<tr>	
+			<td><center>Fecha inicio</td>
+			<td><center><input type="text" id="fecha_ini" name="fecha_ini" /></td>
+			<td><center>Feha Fin</td>
+			<td><center><input type="text" id="fecha_fin" name="fecha_fin" /></td>
+	</tr>
+		<tr>	
+			<td><center>Trabajo asignado al empleado</td>
+			<td colspan="4"><center>
+			  <textarea name="trabajo" cols="50" id="trabajo"></textarea></td>	
+	</tr>
+	</table>
+	
+	
+				
+				
+				<br />
+				<input type="hidden" id="id_odt" name="id_odt">
+				<input name="submit" type="submit" value="Guardar">
+				
+				</form></div>
 			</div>
 		</div>
 		

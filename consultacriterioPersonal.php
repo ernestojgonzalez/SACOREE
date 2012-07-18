@@ -6,7 +6,7 @@
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Inicio</title>
+    <title>CONSULTAR</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -77,31 +77,30 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<div align="center"><?php
-// declaracion de variables
 
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
+<center>
 
 
+<form action="consultacriterioPersonal2.php" method="post" name="form1" id="form1">
+ <div align="center"><p><h3><center>Por favor introduzca</h3> 
+ </p></div>
+<table width="173" height="27" border="1" bordercolor="CCCCCC">
+<TR>
+<td width="85" height="21"> <div align="center">Nombre</div></td>
+<td> ó </td>
+<td width="72"> <div align="center">Cédula</div></td>
+</TR>
+</table>
+<br /><br />
+  <table width="180" bgcolor="#FFCCFF" border="1" bordercolor="#FFFFFF">
+<tr>
+<td width="130"><center><input type="text" size="20" name="criterio" id="criterio"></td>
 
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
+</tr>
+</table>
+  <input name="submit" type="submit" value="Buscar">
+</form>
 
-$equipo=strtoupper($equipo);
-
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
-
-       mysql_close ($enlace);
-   ?>
 <!-- empieza el formulario    -->
 
                 </div>

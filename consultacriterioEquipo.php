@@ -76,32 +76,28 @@
                                     </div>
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
-<p><br /></p>
-<div align="center"><?php
-// declaracion de variables
+<br />
+<!-- EMPIEZA LA PAG -->
+                              <br>
+<center>
+<p> <h3><center>Por favor introduzca </3></p>
+<table width="180" height="30" border="1" bordercolor="CCCCCC">
+<TR>
+<td width="85"> <div align="center">Nombre</div></td>
+<td width="72"> <div align="center">Codigo</div></td>
+</TR>
+</table>
+<br />
+<form action="consultacriterioEquipo2.php" method="post" name="form1" id="form1">
+  <table width="250" bgcolor="#FFCCFF" border="1" bordercolor="#FFFFFF">
+<tr>
+  <td width="136"><center><input type="text" size="20" name="criterio" id="criterio"></td>
 
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
-
-
-
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
-
-$equipo=strtoupper($equipo);
-
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
-
-       mysql_close ($enlace);
-   ?>
+</tr>
+</table>
+  <input name="submit" type="submit" value="Buscar">
+</form>
+<!-- PIE DE PAG -->
 <!-- empieza el formulario    -->
 
                 </div>

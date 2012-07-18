@@ -77,31 +77,21 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<div align="center"><?php
-// declaracion de variables
+                           <br><br>
+<center>
+<p><h3><center>Por favor introduzca<br>Nombre de la pieza</p></center></h3>
 
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
+<form action="consultacriterioPieza2.php" method="post" name="form1" id="form1">
 
+    <table width="250" bgcolor="#FFCCFF" border="1" bordercolor="#FFFFFF">
+<tr>
+  <td width="136"><center><input type="text" size="20" name="nombre_equipo" id="nombre_equipo"></td>
 
+</tr>
+</table>
 
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
-
-$equipo=strtoupper($equipo);
-
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
-
-       mysql_close ($enlace);
-   ?>
+  <input name="submit" type="submit" value="Buscar">
+</form>
 <!-- empieza el formulario    -->
 
                 </div>

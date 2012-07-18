@@ -77,31 +77,82 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<div align="center"><?php
-// declaracion de variables
-
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
+<p><br /></p>
 
 
+<?php
 
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
+	include "coneccionbasedatosmysql.inc";
+    $criterio = $_POST['criterio'];
+	//declarando la variable $criterio
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
 
-$equipo=strtoupper($equipo);
 
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
+	if(!isset($_GET['pag']))
+//paginacion
+	{
 
-       mysql_close ($enlace);
-   ?>
+	$pag=1;
+
+	}else
+
+	{
+
+		$pag=$_GET['pag'];
+
+	}
+
+	$hasta=10000000;
+	$desde=($hasta*$pag)-$hasta;
+// consulta a la tabla informe_personal	
+	$consulta="SELECT * FROM equipo where match (nombre,codigo) against ('$criterio*' IN BOOLEAN MODE)";
+	$resultado=mysql_query($consulta,$enlace);
+
+
+?>
+
+<center>
+<CAPTION><strong><h3><center>CONSULTA</h3></strong></CAPTION>
+<p>&nbsp;</p>
+<table width="600"  border="1" class="tabla1"/>
+
+   <TR bgcolor="#E4E4E7">
+
+	<TH>Equipo</TH>
+	<TH>Modelo</TH>
+	<TH>Marca</TH>
+    <TH>Cantidad</TH>
+    <TH>Foto</TH>
+  </tr>
+	<?PHP
+		$i=0;
+		while ($row = mysql_fetch_row($resultado))
+    {
+       $link2 =$row[5];
+
+       	echo "<td><center>Codigo: $row[0]<br>Nombre: $row[1]</td>";
+		echo "<td><center>$row[2]</td>";
+		echo "<td><center>$row[3]</td>";
+       	echo "<td><center>$row[4]</td>";
+		echo "<td><center><a target=_blank href='$link2'><img src='$row[5]' width='120'height='100'></a></td>";
+
+	   $i=$i+1;
+
+       if (($i%1)==0)
+
+       {
+
+       echo "<tr></tr>";
+
+       }
+
+    }
+
+		mysql_free_result($resultado);
+
+	 ?>
+  </table>
 <!-- empieza el formulario    -->
 
                 </div>

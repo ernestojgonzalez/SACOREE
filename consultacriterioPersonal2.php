@@ -77,31 +77,75 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<div align="center"><?php
-// declaracion de variables
+<?php
 
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
+	include "coneccionbasedatosmysql.inc";
+    $criterio = $_POST['criterio'];
+	//declarando la variable $criterio
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
 
 
+	if(!isset($_GET['pag']))
+//paginacion
+	{
 
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
+	$pag=1;
 
-$equipo=strtoupper($equipo);
+	}else
 
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
+	{
 
-       mysql_close ($enlace);
-   ?>
+		$pag=$_GET['pag'];
+
+	}
+
+	$hasta=10000000;
+	$desde=($hasta*$pag)-$hasta;
+// consulta a la tabla informe_personal	
+	$consulta="SELECT * FROM personal where match (cedula,nombre) against ('$criterio*' IN BOOLEAN MODE)";
+	$resultado=mysql_query($consulta,$enlace);
+
+
+?>
+
+<center>
+<CAPTION><strong>PERSONAL</strong></CAPTION>
+
+<table width="550"  border="1" class="tabla1"/>
+
+   <TR bgcolor="#E4E4E7">
+	<TH>Empleado</TH>
+	<TH>Cargo</TH>
+	<TH>Horario</TH>	
+    <TH>Foto</TH>
+  </tr>
+	<?PHP
+		$i=0;
+		while ($row = mysql_fetch_row($resultado))
+    {
+       $link2 =$row[5];
+
+		echo "<td><center>$row[1]<br></br> $row[2] <br></br>$row[0]</td>";
+		echo "<td><br></br>$row[3]</td>";
+		echo "<td><br></br>$row[4]</td>";
+	    echo "<td><CENTER><a target=_blank href='$link2'><img src='$row[5]' width='100'height='70'></a></td>";
+	   $i=$i+1;
+
+       if (($i%1)==0)
+
+       {
+
+       echo "<tr></tr>";
+
+       }
+
+    }
+
+		mysql_free_result($resultado);
+
+	 ?>
+  </table>
 <!-- empieza el formulario    -->
 
                 </div>

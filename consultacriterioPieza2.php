@@ -77,31 +77,87 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<div align="center"><?php
-// declaracion de variables
 
-$id_odt=$_POST['id_odt'];
-$trabajo=$_POST['trabajo'];
-$fecha_ini=$_POST['fecha_ini'];
-$fecha_fin=$_POST['fecha_fin'];
-$empleado=$_POST['empleado'];
-$equipo=$_POST['equipo'];
+<?php
 
+	include "coneccionbasedatosmysql.inc";
+    $nombre_equipo = $_POST['nombre_equipo'];
+	//declarando la variable $criterio
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
 
 
-include "coneccionbasedatosmysql.inc";
-$enlace =conectarbase();
-// $enlace se iguala a la funcion cenectarbase()
-$trabajo=strtoupper($trabajo);
+	if(!isset($_GET['pag']))
+//paginacion
+	{
 
-$equipo=strtoupper($equipo);
+	$pag=1;
 
-             $Insertar= "INSERT INTO orden VALUES('NULL','$trabajo','$fecha_ini','$fecha_fin','$empleado','$equipo')";
-             $resultadoins=basedatos($Insertar);
-             echo "<tr><td><p><strong><center>La Informacion fue registrada satisfactoriamente</center></strong></p><BR></td></tr>";
+	}else
 
-       mysql_close ($enlace);
-   ?>
+	{
+
+		$pag=$_GET['pag'];
+
+	}
+
+	$hasta=10000000;
+	$desde=($hasta*$pag)-$hasta;
+// consulta a la tabla informe_personal	
+	//$consulta="SELECT * FROM equipo where match (nombre_equipo,codigo_equipo,fecha,estado) against ('$criterio*' IN BOOLEAN MODE) order by fecha LIMIT $desde, $hasta";
+	
+	//$consulta="SELECT * FROM partepieza where match (id_parte_pieza, nombre_equipo,piezas,codigo_parte,nombre_parte,cantidad_parte) against ('$criterio*' IN BOOLEAN MODE) order by id_parte_pieza LIMIT $desde, $hasta";
+	
+	 $consulta = "SELECT * from piezas where nombre_equipo = '$nombre_equipo';";
+	 
+	$resultado=mysql_query($consulta,$enlace);
+
+
+?>
+
+<center>
+<CAPTION><strong><h3><center>CONSULTA</h3></strong></CAPTION>
+<p>&nbsp;</p>
+<center><table align="center" width="600"  border="1" class="tabla1"/>
+
+   <TR bgcolor="#E4E4E7">
+	<TH>Equipo<?php echo "$";></TH>
+	<TH>Parte del Equipo</TH>
+	<TH>Marca y modelo</TH>
+	<TH>Cantidad</TH>
+	<TH>Descripcion</TH>
+	<TH>Pieza que tiene la parte del equipo</TH>
+	
+  </tr>
+	<?PHP
+		$i=0;
+		while ($row = mysql_fetch_row($resultado))
+    {
+
+       echo "<td>$row[1]</td>";
+       	echo "<td>Nompre: $row[2] <br> Codigo $row[3]</td>";
+       	echo "<td>Marca: $row[4] <br> Modelo: $row[5]</td>";
+		echo "<td>$row[6]</td>";
+		echo "<td>$row[7]</td>";
+		echo "<td>$row[8]</td>";
+
+
+	   $i=$i+1;
+
+       if (($i%1)==0)
+
+       {
+
+       echo "<tr></tr>";
+
+       }
+
+    }
+
+		mysql_free_result($resultado);
+
+	 ?>
+  </table>
 <!-- empieza el formulario    -->
 
                 </div>

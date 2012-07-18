@@ -156,14 +156,16 @@
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td><br /><center><img src="images/personas.gif" width="200" height="200"/><center>Empleado</td>
+		<td><br /><center>
+		  <a href="consultacriterioPersonal.php"><img src="images/personas.gif" width="200" height="200" border="0"/></a>
+		  <center>Empleado</td>
 			<td>&nbsp;</td>
-		<td><br /><center><img src="images/gif-picture-search-i1.gif" width="200" height="200" /><center>Empleado</td>	
+		<td><br /><center><a href="consultacriterioEquipo.php"> <img src="images/gif-picture-search-i1.gif" width="200" height="200" /> </a><center>Equipo</td>	
 		<td><br /><center>&nbsp;<br /><br /></td>
 	</tr>
 	<tr>
 		<td><br /><br /><br /></td>
-		<td><center><img src="images/windows-desktop-search.gif" width="200" height="200" /><center>Piezas</td>
+		<td><center><a href="consultacriterioPiezas.php"><img src="images/windows-desktop-search.gif" width="200" height="200" /><center>Piezas</td>
 			<td><br /><br /><br /></td>
 		<td><center><img src="images/El Orden.gif" width="200" height="200" /><center>Orden de trabajo</td>
 		<td><br /><center>&nbsp;<br /><br /></td>
