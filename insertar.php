@@ -33,7 +33,7 @@ $totalRows_equipo = mysql_num_rows($equipo);
 	
 	
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>					
 		<script type="text/javascript">
 			$(function(){
 
@@ -45,7 +45,7 @@ $totalRows_equipo = mysql_num_rows($equipo);
 
 				// Dialog
 				$('#dialog').dialog({
-					autoOpen: false,
+autoOpen: false,
 					width: 600,
 					buttons: {
 						"Ok": function() {
@@ -65,13 +65,25 @@ $totalRows_equipo = mysql_num_rows($equipo);
 
 				// Datepicker
 				$('#fecha_ini').datepicker({
+				
 					inline: true
 				});
 					// Datepicker
-				$('#fecha_fin').datepicker({
-					inline: true
-				});
 				
+				
+				$('#fecha_fin').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				inline: true,	
+				changedateformat: true,
+				dateformat: 'dd-mm-yy',
+				//showOn: 'button',
+				//buttonImage: '/img.png',
+				//buttonImageOnly: true,
+				
+				firstDay: 1
+				});
+		
 				// Slider
 				$('#slider').slider({
 					range: true,
@@ -345,7 +357,7 @@ do {
 		
 		
 			<td><center>Fecha Fin</td>
-			<td class="demo"><center><input id="fecha_fin" type="date" name="fecha_fin" /></td>
+			<td class="demo"><center><input id="fecha_fin" type="date" name="fecha_fin" /> <?php dateformat: 'dd-mm-yy'?></td>
 	</tr>
 		<tr>	
 			<td><center>Trabajo asignado al empleado</td>
