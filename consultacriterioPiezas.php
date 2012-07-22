@@ -79,13 +79,14 @@
 <p><br /></p>
                            <br><br>
 <center>
-<p><h3><center>Por favor introduzca<br>Nombre de la pieza</p></center></h3>
+<p><h3><center>Por favor introduzca<br>Nombre de la pieza o del equipo</p></center></h3>
 
 <form action="consultacriterioPieza2.php" method="post" name="form1" id="form1">
 
     <table width="250" bgcolor="#FFCCFF" border="1" bordercolor="#FFFFFF">
 <tr>
-  <td width="136"><center><input type="text" size="20" name="nombre_equipo" id="nombre_equipo"></td>
+  <td width="136"><center><input type="text" size="20" name="criterio" id="criterio"></td>
+  
 
 </tr>
 </table>

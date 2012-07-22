@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_empleado" value="name:cedula;datatype:int,name:nombre;datatype:string,name:apellido;datatype:string,name:cargo;datatype:string,name:horario;datatype:string,name:archivo;datatype:string,name:titulo;datatype:string" />
+	<infoitem key="UD_equipo" value="name:codigo;datatype:string,name:nombre;datatype:string,name:modelo;datatype:string,name:marca;datatype:string,name:cantidad;datatype:string,name:archivo;datatype:string,name:titulo;datatype:string,name:num_reg;datatype:int" />
+	<infoitem key="UD_personal" value="name:cedula;datatype:int,name:nombre;datatype:string,name:apellido;datatype:string,name:cargo;datatype:string,name:horario;datatype:string,name:archivo;datatype:string,name:titulo;datatype:string" />
+	<infoitem key="UD_equipo2" value="name:codigo;datatype:string,name:nombre;datatype:string,name:modelo;datatype:string,name:marca;datatype:string,name:cantidad;datatype:string,name:archivo;datatype:string,name:titulo;datatype:string,name:num_reg;datatype:int" />
+</info>

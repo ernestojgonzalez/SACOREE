@@ -1,4 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
+<?php require_once('Connections/conexion1.php'); ?>
+<?php
+mysql_select_db($database_conexion1, $conexion1);
+$query_empleado = "SELECT * FROM personal";
+$empleado = mysql_query($query_empleado, $conexion1) or die(mysql_error());
+$row_empleado = mysql_fetch_assoc($empleado);
+$totalRows_empleado = mysql_num_rows($empleado);
+
+mysql_select_db($database_conexion1, $conexion1);
+$query_equipo = "SELECT * FROM equipo";
+$equipo = mysql_query($query_equipo, $conexion1) or die(mysql_error());
+$row_equipo = mysql_fetch_assoc($equipo);
+$totalRows_equipo = mysql_num_rows($equipo);
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
 <head>
     <!--
@@ -51,10 +64,14 @@
 				});
 
 				// Datepicker
-				$('#datepicker').datepicker({
+				$('#fecha_ini').datepicker({
 					inline: true
 				});
-
+					// Datepicker
+				$('#fecha_fin').datepicker({
+					inline: true
+				});
+				
 				// Slider
 				$('#slider').slider({
 					range: true,
@@ -101,7 +118,7 @@
         <div class="art-logo">
                  <h1 class="art-logo-name"><a href="./index.html">...SACOREE...</a></h1>
                          <h2 class="art-logo-text">Nuestro deber es servir.</h2>
-                </div>
+          </div>
     </div>
     </div>
     </div>
@@ -141,7 +158,7 @@
                     <img src="./images/postheadericon.png" width="30" height="30" alt="" />Insertar
                                         </h2>
                     <div class="cleared"></div>
-                                    </div>
+                    </div>
                                 <div class="art-postcontent">
 <!-- Accordion -->
 	
@@ -235,7 +252,20 @@
 	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
 			<td><center>Equipo</td>
-			<td><center><input type="text" id="nombre" name="nombre" /></td>
+			<td><center><select name="nombre_equipo" id="nombre_equipo">
+			  <?php
+do {  
+?>
+			  <option value="<?php echo $row_equipo['nombre'],'  ', $row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['codigo'], $row_equipo['codigo']))) {echo "selected=\"selected\"";} ?>><?php echo $row_equipo['nombre'],'  ',$row_equipo['codigo']?></option>
+			  <?php
+} while ($row_equipo = mysql_fetch_assoc($equipo));
+  $rows = mysql_num_rows($equipo);
+  if($rows > 0) {
+      mysql_data_seek($equipo, 0);
+	  $row_equipo = mysql_fetch_assoc($equipo);
+  }
+?>
+			</select></td>
 			<td><center>Pieza</td>
 			<td><center><input type="text" id="pieza" name="pieza" /></td>
 			<td><center>Codigo</td>
@@ -278,15 +308,44 @@
 	<table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
 			<td><center>Empleado</td>
-			<td><center><input type="text" id="empleado" name="empleado" /></td>
+			<td><center><select name="empleado">
+			  <?php
+do {  
+?>
+			  <option value="<?php echo $row_empleado['nombre'],' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?>"<?php if (!(strcmp($row_empleado['cedula'], $row_empleado['cedula']))) {echo "selected=\"selected\"";} ?>><?php echo $row_empleado['nombre'] ,' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?></option>
+			  <?php
+} while ($row_empleado = mysql_fetch_assoc($empleado));
+  $rows = mysql_num_rows($empleado);
+  if($rows > 0) {
+      mysql_data_seek($empleado, 0);
+	  $row_empleado = mysql_fetch_assoc($empleado);
+  }
+?>
+			</select>
 			<td><center>Equipo</td>
-			<td><center><input type="text" id="equipo" name="equipo" /></td>
+			<td><center><select name="equipo">
+			  <?php
+do {  
+?>
+			  <option value="<?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['nombre'], $row_equipo['nombre']))) {echo "selected=\"selected\"";} ?>><?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?></option>
+			  <?php
+} while ($row_equipo = mysql_fetch_assoc($equipo));
+  $rows = mysql_num_rows($equipo);
+  if($rows > 0) {
+      mysql_data_seek($equipo, 0);
+	  $row_equipo = mysql_fetch_assoc($equipo);
+  }
+?>
+			</select></td>
 	</tr>
 	<tr>	
 			<td><center>Fecha inicio</td>
-			<td><center><input type="text" id="fecha_ini" name="fecha_ini" /></td>
-			<td><center>Feha Fin</td>
-			<td><center><input type="text" id="fecha_fin" name="fecha_fin" /></td>
+			<td class="demo"><center><input id="fecha_ini" type="date" name="fecha_ini" /></td>
+
+		
+		
+			<td><center>Fecha Fin</td>
+			<td class="demo"><center><input id="fecha_fin" type="date" name="fecha_fin" /></td>
 	</tr>
 		<tr>	
 			<td><center>Trabajo asignado al empleado</td>
@@ -329,7 +388,7 @@
                 <div class="art-footer-body">
                             <div class="art-footer-text">
                                 
-                                                            </div>
+                  </div>
                     <div class="cleared"></div>
                 </div>
             </div>
@@ -344,3 +403,8 @@
 
 </body>
 </html>
+<?php
+mysql_free_result($empleado);
+
+mysql_free_result($equipo);
+?>

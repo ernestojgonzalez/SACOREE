@@ -5,7 +5,7 @@
     Created by Artisteer v3.0.0.39952
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-2" />
     <title>Inicio</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
@@ -77,7 +77,7 @@
                                 <div class="art-postcontent">
 <!-- empieza el formulario    -->
 <p><br /></p>
-<center><p>SISTEMA AUTOMATIZADO CREADO CON LA FINALIDAD DE OPTIMIZA LOS PROCESOS EN EL REGISTRO DEL PERSONAL Y REGISTRO DE EQUIPOS.</p>
+<center><p><h3><center>SISTEMA AUTOMATIZADO CREADO CON LA FINALIDAD DE OPTIMIZA LOS PROCESOS EN EL REGISTRO DEL PERSONAL Y REGISTRO DE EQUIPOS.</h3></p>
 <center><img src="images/Dibujo.bmp" />
 <!-- empieza el formulario    -->
 

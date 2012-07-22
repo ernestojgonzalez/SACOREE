@@ -207,7 +207,7 @@ body
   color: #1C2E31;
   height:100%;
   min-height:100%;
-  background-color: #EFE8CC;
+  background-color: #FFEAFF;
   background-image: url('images/Bottom_texture.png');
   background-repeat: repeat-x;
   background-attachment: scroll;
@@ -1266,7 +1266,7 @@ pre
 {
   overflow:hidden;
   padding: 1px;
-  background-color: #EFE8CC;
+  background-color: #FFCCFF;
   border-color: #E1D39E;
   border-style: dashed;
   border-width: 1px;

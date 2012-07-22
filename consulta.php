@@ -167,7 +167,7 @@
 		<td><br /><br /><br /></td>
 		<td><center><a href="consultacriterioPiezas.php"><img src="images/windows-desktop-search.gif" width="200" height="200" /><center>Piezas</td>
 			<td><br /><br /><br /></td>
-		<td><center><img src="images/El Orden.gif" width="200" height="200" /><center>Orden de trabajo</td>
+		<td><center><a href="consultacriterioOrden.php"><img src="images/El Orden.gif" width="200" height="200" /></a><center>Orden de trabajo</td>
 		<td><br /><center>&nbsp;<br /><br /></td>
 	</tr>
 		<tr>

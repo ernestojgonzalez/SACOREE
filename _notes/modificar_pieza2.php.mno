@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_modipieza" value="name:codigo;datatype:string,name:nombre;datatype:string,name:modelo;datatype:string,name:marca;datatype:string,name:cantidad;datatype:string,name:archivo;datatype:string,name:titulo;datatype:string,name:num_reg;datatype:int" />
+</info>

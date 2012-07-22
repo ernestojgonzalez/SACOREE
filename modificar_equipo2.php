@@ -6,7 +6,7 @@
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>MODIFICAR</title>
+    <title>Inicio</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -14,77 +14,9 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
-<link type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="script.js"></script>
-	
-	
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-
-				// Accordion
-				$("#accordion").accordion({ header: "h3" });
-
-				// Tabs
-				$('#tabs').tabs();
-
-				// Dialog
-				$('#dialog').dialog({
-					autoOpen: false,
-					width: 600,
-					buttons: {
-						"Ok": function() {
-							$(this).dialog("close");
-						},
-						"Cancel": function() {
-							$(this).dialog("close");
-						}
-					}
-				});
-
-				// Dialog Link
-				$('#dialog_link').click(function(){
-					$('#dialog').dialog('open');
-					return false;
-				});
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-
-				// Slider
-				$('#slider').slider({
-					range: true,
-					values: [17, 67]
-				});
-
-				// Progressbar
-				$("#progressbar").progressbar({
-					value: 20
-				});
-
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); },
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-
-			});
-		</script>
-		<style type="text/css">
-			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
-			.demoHeaders { margin-top: 2em; }
-			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-			ul#icons {margin: 0; padding: 0;}
-			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-			ul#icons span.ui-icon {float: left; margin: 0 4px;}
-		</style>
-		
 </head>
 <body>
 <div id="art-page-background-middle-texture">
@@ -138,46 +70,122 @@
 <div class="art-post-inner art-article">
                                 <div class="art-postmetadataheader">
                                         <h2 class="art-postheader">
-                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Modificar
+                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Inicio
                                         </h2>
                     <div class="cleared"></div>
                                     </div>
                                 <div class="art-postcontent">
+<!-- empieza el formulario    -->
+<p><br /></p>
+<div align="center">
 
-	<form method="post" action="" name="form" id="form">
-	<br /><br /><br /><center>
-	<table width="500" align="center" border="2" bordercolor="#999966">
+    <p>&nbsp;      </p>
+    <p>
+      <?php
+    include "coneccionbasedatosmysql.inc";
+    $criterio = $_POST['criterio'];
+	//declarando la variable $criterio
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
+
+   $consulta = "SELECT * from equipo where codigo = '$criterio';";
+  // consulta a la tabla informe_personal
+                   $resultado=basedatos($consulta);
+                   $nro_fil = mysql_num_rows($resultado);
+
+                   if($nro_fil == 0)
+                   {
+
+                   echo "<center><table><tr><td><br><br><strong><center>El equipo $criterio <br> no existe en nuestra base de datos.</center></strong></td></tr></table></center>";
+                   }else
+                   {
+                   while ($row = mysql_fetch_row($resultado)){
+                   $codigo=$row[0];
+                   $nombre=$row[1];
+                   $modelo=$row[2];
+                   $marca=$row[3];
+                   $cantidad=$row[4];
+                   $titulo=$row[6];
+				   $num_reg=$row[7];           
+  
+				   $link2=$row[5];
+                   ?>
+      <strong>MODIFICAR EQUIPO</strong>    </p>
+    <table width="400" border="8" bordercolor="#CCCCCC">
+                      <tr><td><strong>Nombre del equipo:</strong></td><td><?php echo "  $row[1]" ?></td></tr>
+                      <tr><td><strong>Código del equipo:</strong></td><td><?php echo "  $row[0]" ?></td></tr>
+                      <tr><td><strong>Modelo:</strong></td><td><?php echo "  $row[2]" ?></td></tr>
+                      <tr><td><strong>Marca:</strong></td><td><?php echo "$row[3]" ?></td></tr>
+  					  <tr><td><strong>Cantidad:</strong></td><td><?php echo "  $row[4]" ?></td></tr>
+                 		  
+                      <tr><td><strong>Foto del Equipo:</strong></td><td><?php echo "<a href='$link2'>$row[5]</a>" ?></td></tr> <br /><br />
+					  
+                   <?php
+                   }
+                   ?>
+
+<form action="modificar_equipo.php" method="post" enctype="multipart/form-data" name="form2" id="form2" onSubmit="return validar2()"  >
+ <br>
+<div align="center">
+   
+  <br /><br />
+    <table width="700" align="center" border="1" bordercolor="#FFCC99" bgcolor="#FFCCFF">
 	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>	
-		<td>&nbsp;</td>
+			<td><center>Nombre</td>
+			<td><center><input type="text" id="mombre" name="nombre" value="<?php echo $nombre?>"/></td>
+			<td><center>Codigo</td>
+			<td><center><input type="text" id="codigo" name="codigo" value="<?php echo $codigo?>"/></td>
+			<td><center>Marca</td>
+			<td><center><input type="text" id="marca" name="marca" value="<?php echo $marca?>"/></td>
+			
+			
 	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td><br /><center><a href="modificar_equipo1.php"><img src="images/reparacion.gif"width="200" height="200"/><center>Equipo</a></td>
-			<td>&nbsp;</td>
-		<td><br /><center> <a href="modificar_empleado1.php"><img src="images/TRABAJO DE EQUIPO.jpg" width="200" height="200" /><center>Empleado</a></td>	
-		<td><br /><center>&nbsp;<br /><br /></td>
-	</tr>
-	<tr>
-		<td><br /><br /><br /></td>
-		<td><center><a href="modificar_pieza.php"><img src="images/golpeando engranajes.gif" width="200" height="200" /><center>Piezas</a></td>
-			<td><br /><br /><br /></td>
-		<td><center><a href="modificar_odt.php" ><img src="images/secretaria.gif" width="200" height="200" /><center>Orden de trabajo</a></td>
-		<td><br /><center>&nbsp;<br /><br /></td>
-	</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>	
-		<td>&nbsp;</td>
+	<tr>	
+			<td><center>Modelo</td>
+			<td><center><input type="text" id="modelo" name="modelo" value="<?php echo $modelo?>" /></td>
+			<td><center></td>
+			<td><center></td>
+			<td><center>Cantidad</td>
+			<td><center><input type="text" id="cantidad" name="cantidad" value="<?php echo $cantidad?>"/></td>
+			
 	</tr>
 	</table>
-	
-	</form>
+
+<br>
+<strong>FOTO DEL EQUIPO</strong>
+<br>
+
+<strong><a href="modificar_foto_equipo.php?num_reg=<?php echo $num_reg?>">Si desea Modificar la Foto pulse aqui</a></strong>
+
+
+  
+ <input type="hidden" name="num_reg" id="num_reg" value="<?php echo $num_reg ?>"> 
+
+<tr><td colspan="2"><strong><br><br>Presione el botón continuar para guardar los cambios</strong></td></tr>
+<br>
+
+<tr><td colspan="2"><center><br><input name="submit" type="submit" value="Continuar"></center></td></tr>
+
+</form>
+</center>
+</table>
+
+    <p>
+      <?php
+
+                   }
+                   mysql_free_result($resultado);
+                   mysql_close ($enlace);
+
+
+
+                   ?>
+      </p>
+    <p>&nbsp;
+        </p>
+</div>
+<!-- empieza el formulario    -->
+
                 </div>
                 <div class="cleared"></div>
                 </div>

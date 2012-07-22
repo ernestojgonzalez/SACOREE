@@ -6,7 +6,7 @@
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>MODIFICAR</title>
+    <title>modificar foto</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -14,77 +14,9 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
-<link type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="script.js"></script>
-	
-	
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-
-				// Accordion
-				$("#accordion").accordion({ header: "h3" });
-
-				// Tabs
-				$('#tabs').tabs();
-
-				// Dialog
-				$('#dialog').dialog({
-					autoOpen: false,
-					width: 600,
-					buttons: {
-						"Ok": function() {
-							$(this).dialog("close");
-						},
-						"Cancel": function() {
-							$(this).dialog("close");
-						}
-					}
-				});
-
-				// Dialog Link
-				$('#dialog_link').click(function(){
-					$('#dialog').dialog('open');
-					return false;
-				});
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-
-				// Slider
-				$('#slider').slider({
-					range: true,
-					values: [17, 67]
-				});
-
-				// Progressbar
-				$("#progressbar").progressbar({
-					value: 20
-				});
-
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); },
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-
-			});
-		</script>
-		<style type="text/css">
-			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
-			.demoHeaders { margin-top: 2em; }
-			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-			ul#icons {margin: 0; padding: 0;}
-			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-			ul#icons span.ui-icon {float: left; margin: 0 4px;}
-		</style>
-		
 </head>
 <body>
 <div id="art-page-background-middle-texture">
@@ -138,46 +70,59 @@
 <div class="art-post-inner art-article">
                                 <div class="art-postmetadataheader">
                                         <h2 class="art-postheader">
-                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Modificar
+                    <img src="./images/postheadericon.png" width="30" height="30" alt="" />Inicio
                                         </h2>
                     <div class="cleared"></div>
                                     </div>
                                 <div class="art-postcontent">
+<!-- empieza el formulario    -->
+<p><br /></p>
+<?php
+$cedula=$_REQUEST['cedula'];
+	//recibe variabla codigo_equipo
+$titulo=$_POST['titulo'];
+		//declarando la variable $titulo
 
-	<form method="post" action="" name="form" id="form">
-	<br /><br /><br /><center>
-	<table width="500" align="center" border="2" bordercolor="#999966">
-	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>	
-		<td>&nbsp;</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td><br /><center><a href="modificar_equipo1.php"><img src="images/reparacion.gif"width="200" height="200"/><center>Equipo</a></td>
-			<td>&nbsp;</td>
-		<td><br /><center> <a href="modificar_empleado1.php"><img src="images/TRABAJO DE EQUIPO.jpg" width="200" height="200" /><center>Empleado</a></td>	
-		<td><br /><center>&nbsp;<br /><br /></td>
-	</tr>
-	<tr>
-		<td><br /><br /><br /></td>
-		<td><center><a href="modificar_pieza.php"><img src="images/golpeando engranajes.gif" width="200" height="200" /><center>Piezas</a></td>
-			<td><br /><br /><br /></td>
-		<td><center><a href="modificar_odt.php" ><img src="images/secretaria.gif" width="200" height="200" /><center>Orden de trabajo</a></td>
-		<td><br /><center>&nbsp;<br /><br /></td>
-	</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>	
-		<td>&nbsp;</td>
-	</tr>
-	</table>
-	
-	</form>
+$nro_fil = 0;
+
+include "coneccionbasedatosmysql.inc";
+$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
+
+//tomo el valor de un elemento de tipo texto del formulario
+ $nombre_archivo2 = $titulo.".jpeg";
+//datos del arhivo
+ $nombre_archivo = $_FILES['archivo']['name'];
+ $tipo_archivo = $_FILES['archivo']['type'];
+ $tamano_archivo = $_FILES['archivo']['size'];
+//compruebo si las características del archivo son las que deseo
+if (!((strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000000)))
+{
+   echo "<center>La extensión o el tamano de los archivos no es correcta. <br><br>Se permiten fotos con formato .jpg unicamente<br>";
+}
+else 
+{
+	// funcion para copiar el archivo en el servidor
+   if (move_uploaded_file($_FILES['archivo']['tmp_name'], "rutas/$nombre_archivo2"))
+   {
+      echo "<BR><p><strong><center>El archivo ha sido Modificado correctamente</center></strong></p><BR>";
+      if($nro_fil == 0)
+           {
+             $ruta = "rutas/$nombre_archivo2"; 
+			 // modifica la tabla cuando el nu de registro sea igual al num de registro recibido
+             $Insertar= "UPDATE personal SET titulo='$titulo', archivo='$ruta' WHERE $cedula=cedula";
+             $resultadoins=basedatos($Insertar);
+             echo "<BR><p><strong><center>Foto almacenado</center></strong></p><BR>";
+           }
+       mysql_close ($enlace);
+   }else
+    {
+      echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+    }
+}
+?>
+<!-- empieza el formulario    -->
+
                 </div>
                 <div class="cleared"></div>
                 </div>

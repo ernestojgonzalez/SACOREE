@@ -81,7 +81,7 @@
 <?php
 
 	include "coneccionbasedatosmysql.inc";
-    $nombre_equipo = $_POST['nombre_equipo'];
+    $criterio = $_POST['criterio'];
 	//declarando la variable $criterio
 	$enlace =conectarbase();
 	// $enlace se iguala a la funcion cenectarbase()
@@ -104,24 +104,19 @@
 	$hasta=10000000;
 	$desde=($hasta*$pag)-$hasta;
 // consulta a la tabla informe_personal	
-	//$consulta="SELECT * FROM equipo where match (nombre_equipo,codigo_equipo,fecha,estado) against ('$criterio*' IN BOOLEAN MODE) order by fecha LIMIT $desde, $hasta";
-	
-	//$consulta="SELECT * FROM partepieza where match (id_parte_pieza, nombre_equipo,piezas,codigo_parte,nombre_parte,cantidad_parte) against ('$criterio*' IN BOOLEAN MODE) order by id_parte_pieza LIMIT $desde, $hasta";
-	
-	 $consulta = "SELECT * from piezas where nombre_equipo = '$nombre_equipo';";
-	 
+	$consulta="SELECT * FROM piezas where match (nombre_equipo,pieza) against ('$criterio*' IN BOOLEAN MODE)";
 	$resultado=mysql_query($consulta,$enlace);
 
 
 ?>
 
 <center>
-<CAPTION><strong><h3><center>CONSULTA</h3></strong></CAPTION>
+<CAPTION><strong>CONSULTA POR CRITERIO</strong></CAPTION>
 <p>&nbsp;</p>
-<center><table align="center" width="600"  border="1" class="tabla1"/>
+<table width="650"  border="1" bordercolor="#CCCCCC" class="tabla1"/>
 
-   <TR bgcolor="#E4E4E7">
-	<TH>Equipo<?php echo "$";></TH>
+ 	<TR bgcolor="#E4E4E7">
+	<TH>Equipo</TH>
 	<TH>Parte del Equipo</TH>
 	<TH>Marca y modelo</TH>
 	<TH>Cantidad</TH>
@@ -133,14 +128,16 @@
 		$i=0;
 		while ($row = mysql_fetch_row($resultado))
     {
-
-       echo "<td>$row[1]</td>";
-       	echo "<td>Nompre: $row[2] <br> Codigo $row[3]</td>";
-       	echo "<td>Marca: $row[4] <br> Modelo: $row[5]</td>";
-		echo "<td>$row[6]</td>";
-		echo "<td>$row[7]</td>";
-		echo "<td>$row[8]</td>";
-
+       
+  
+       	echo "<td><center>$row[1]</td>";
+		echo "<td><center>$row[2]<br>Codigo:$row[3]</td>";
+		echo "<td><center>Marca: $row[4]<br>Modelo:$row[5]</td>";
+		echo "<td><center>$row[6]</td>";
+       	echo "<td><center>$row[7]</td>";
+		echo "<td><center>$row[8]</td>";
+		
+		
 
 	   $i=$i+1;
 
