@@ -6,7 +6,7 @@
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>MODIFICAR</title>
+    <title>ELIMINAR</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -14,77 +14,9 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
-<link type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="script.js"></script>
-	
-	
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-
-				// Accordion
-				$("#accordion").accordion({ header: "h3" });
-
-				// Tabs
-				$('#tabs').tabs();
-
-				// Dialog
-				$('#dialog').dialog({
-					autoOpen: false,
-					width: 600,
-					buttons: {
-						"Ok": function() {
-							$(this).dialog("close");
-						},
-						"Cancel": function() {
-							$(this).dialog("close");
-						}
-					}
-				});
-
-				// Dialog Link
-				$('#dialog_link').click(function(){
-					$('#dialog').dialog('open');
-					return false;
-				});
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-
-				// Slider
-				$('#slider').slider({
-					range: true,
-					values: [17, 67]
-				});
-
-				// Progressbar
-				$("#progressbar").progressbar({
-					value: 20
-				});
-
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); },
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-
-			});
-		</script>
-		<style type="text/css">
-			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
-			.demoHeaders { margin-top: 2em; }
-			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-			ul#icons {margin: 0; padding: 0;}
-			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-			ul#icons span.ui-icon {float: left; margin: 0 4px;}
-		</style>
-		
 </head>
 <body>
 <div id="art-page-background-middle-texture">
@@ -143,38 +75,82 @@
                     <div class="cleared"></div>
                                     </div>
                                 <div class="art-postcontent">
+<!-- empieza el formulario    -->
+<p><br /></p>
+<?php
 
-	<form method="post" action="" name="form" id="form">
-	<br /><br /><br /><center>
-	<table width="500" align="center" border="2" bordercolor="#999966">
-	<tr>
-		<td><br />
-		  <br />		  <br /></td>
-		<td colspan="3">
-		<center><img src="images/pedroantonioduran_eliminar_ficheros_carpeta_php-300x300.png" />
-		<br /></td>
-		<td><br />
-		  <center>		  &nbsp;<br />		  <br />
-		  <br />
-		  <center>		  &nbsp;<br />		  <br /></td>
-	</tr>
-	</table>
-	<table width="500" align="center" border="2" bordercolor="#999966">
-	<tr>
-	<td width="250"><center><a href="eliminarPersonal.php" >EMPLEADO</a></td>
-	<td width="250"><center><a href="eliminarEquipo.php" >EQUIPO</a></td>
-	</tr>
-	<tr>
-	<td></td>
-	<td></td>
-	
-	</tr>
-	<tr>
-	<td><center><a href="eliminarPiezas.php" >PIEZA</a></td>
-	<td><center><a href="eliminarodt.php" >ORDEN DE TRABAJO</a></td>
-	</tr>
-	</table>
-	</form>
+	include "coneccionbasedatosmysql.inc";
+    $criterio = $_POST['criterio'];
+	//declarando la variable $criterio
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
+
+
+	if(!isset($_GET['pag']))
+//paginacion
+	{
+
+	$pag=1;
+
+	}else
+
+	{
+
+		$pag=$_GET['pag'];
+
+	}
+
+	$hasta=10000000;
+	$desde=($hasta*$pag)-$hasta;
+// consulta a la tabla informe_personal	
+	$consulta="SELECT * FROM personal where match (cedula,nombre) against ('$criterio*' IN BOOLEAN MODE)";
+	$resultado=mysql_query($consulta,$enlace);
+
+
+?>
+
+<center>
+<CAPTION><strong>PERSONAL</strong></CAPTION>
+
+<table width="550"  border="1" class="tabla1"/>
+
+   <TR bgcolor="#E4E4E7">
+	<TH>Empleado</TH>
+	<TH>Cargo</TH>
+	<TH>Horario</TH>	
+    <TH>Foto</TH>
+	<TH>Eliminar</TH>
+ 
+  </tr>
+	<?PHP
+		$i=0;
+		while ($row = mysql_fetch_row($resultado))
+    {
+       $link2 =$row[5];
+
+		echo "<td><center>$row[1]<br></br> $row[2] <br></br>$row[0]</td>";
+		echo "<td><br></br>$row[3]</td>";
+		echo "<td><br></br>$row[4]</td>";
+	    echo "<td><CENTER><a target=_blank href='$link2'><img src='$row[5]' width='100'height='70'></a></td>";
+	  	echo "<td><CENTER><a href=eliminarPersonal3.php?cedula=$row[0]>ELIMINAR</a></td>";
+	   $i=$i+1;
+
+       if (($i%1)==0)
+
+       {
+
+       echo "<tr></tr>";
+
+       }
+
+    }
+
+		mysql_free_result($resultado);
+
+	 ?>
+  </table>
+<!-- empieza el formulario    -->
+
                 </div>
                 <div class="cleared"></div>
                 </div>

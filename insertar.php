@@ -62,12 +62,24 @@ autoOpen: false,
 					$('#dialog').dialog('open');
 					return false;
 				});
-
-				// Datepicker
-				$('#fecha_ini').datepicker({
 				
-					inline: true
+				
+				// Datepicker
+				
+				
+				$('#fecha_ini').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				inline: true,	
+				changedateformat: true,
+				dateformat: 'dd-mm-yy',
+				//showOn: 'button',
+				//buttonImage: '/img.png',
+				//buttonImageOnly: true,
+				
+				firstDay: 1
 				});
+				
 					// Datepicker
 				
 				
@@ -265,10 +277,11 @@ autoOpen: false,
 	<tr>
 			<td><center>Equipo</td>
 			<td><center><select name="nombre_equipo" id="nombre_equipo">
+			  <option selected="selected">Seleccionar</option>
 			  <?php
 do {  
 ?>
-			  <option value="<?php echo $row_equipo['nombre'],'  ', $row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['codigo'], $row_equipo['codigo']))) {echo "selected=\"selected\"";} ?>><?php echo $row_equipo['nombre'],'  ',$row_equipo['codigo']?></option>
+			  <option value="<?php echo $row_equipo['nombre'],'  ', $row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['codigo'], $row_equipo['codigo'])))  ?>><?php echo $row_equipo['nombre'],'  ',$row_equipo['codigo']?></option>
 			  <?php
 } while ($row_equipo = mysql_fetch_assoc($equipo));
   $rows = mysql_num_rows($equipo);
@@ -321,10 +334,11 @@ do {
 	<tr>
 			<td><center>Empleado</td>
 			<td><center><select name="empleado">
+			 <option selected="selected">Seleccionar</option>
 			  <?php
 do {  
 ?>
-			  <option value="<?php echo $row_empleado['nombre'],' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?>"<?php if (!(strcmp($row_empleado['cedula'], $row_empleado['cedula']))) {echo "selected=\"selected\"";} ?>><?php echo $row_empleado['nombre'] ,' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?></option>
+			  <option value="<?php echo $row_empleado['nombre'],' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?>"<?php if (!(strcmp($row_empleado['cedula'], $row_empleado['cedula'])))  ?>><?php echo $row_empleado['nombre'] ,' ',$row_empleado['apellido'],' ',$row_empleado['cedula']?></option>
 			  <?php
 } while ($row_empleado = mysql_fetch_assoc($empleado));
   $rows = mysql_num_rows($empleado);
@@ -336,10 +350,11 @@ do {
 			</select>
 			<td><center>Equipo</td>
 			<td><center><select name="equipo">
+			<option selected="selected">Seleccionar</option>
 			  <?php
 do {  
 ?>
-			  <option value="<?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['nombre'], $row_equipo['nombre']))) {echo "selected=\"selected\"";} ?>><?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?></option>
+			  <option value="<?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?>"<?php if (!(strcmp($row_equipo['nombre'], $row_equipo['nombre'])))  ?>><?php echo $row_equipo['nombre'],' ',$row_equipo['codigo']?></option>
 			  <?php
 } while ($row_equipo = mysql_fetch_assoc($equipo));
   $rows = mysql_num_rows($equipo);

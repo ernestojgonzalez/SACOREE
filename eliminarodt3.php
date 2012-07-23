@@ -5,8 +5,8 @@
     Created by Artisteer v3.0.0.39952
     Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
     -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>MODIFICAR</title>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-2" />
+    <title>ELIMINAR</title>
     <meta name="description" content="Description" />
     <meta name="keywords" content="Keywords" />
 
@@ -14,77 +14,9 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
-<link type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="script.js"></script>
-	
-	
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-
-				// Accordion
-				$("#accordion").accordion({ header: "h3" });
-
-				// Tabs
-				$('#tabs').tabs();
-
-				// Dialog
-				$('#dialog').dialog({
-					autoOpen: false,
-					width: 600,
-					buttons: {
-						"Ok": function() {
-							$(this).dialog("close");
-						},
-						"Cancel": function() {
-							$(this).dialog("close");
-						}
-					}
-				});
-
-				// Dialog Link
-				$('#dialog_link').click(function(){
-					$('#dialog').dialog('open');
-					return false;
-				});
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-
-				// Slider
-				$('#slider').slider({
-					range: true,
-					values: [17, 67]
-				});
-
-				// Progressbar
-				$("#progressbar").progressbar({
-					value: 20
-				});
-
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); },
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-
-			});
-		</script>
-		<style type="text/css">
-			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
-			.demoHeaders { margin-top: 2em; }
-			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-			ul#icons {margin: 0; padding: 0;}
-			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-			ul#icons span.ui-icon {float: left; margin: 0 4px;}
-		</style>
-		
 </head>
 <body>
 <div id="art-page-background-middle-texture">
@@ -143,38 +75,22 @@
                     <div class="cleared"></div>
                                     </div>
                                 <div class="art-postcontent">
+<!-- empieza el formulario    -->
+<p><br /></p>
+<?php
+  include "coneccionbasedatosmysql.inc";
+	$id_odt = $_REQUEST['id_odt'];
+   // $cedula = $_POST['cedula'];
+	//declarando la variable $registro
+	$enlace =conectarbase();
+	// $enlace se iguala a la funcion cenectarbase()
+ $Eliminar = "DELETE FROM orden WHERE id_odt='$id_odt'; ";
+ $resultado=basedatos($Eliminar);
+ echo "<center><table><tr><td><BR><p><strong><center>La Orden de Trabajo fué eliminado</center></strong></p><BR></td></tr></table></center>";
+ mysql_close ($enlace);
+ ?>
+<!-- empieza el formulario    -->
 
-	<form method="post" action="" name="form" id="form">
-	<br /><br /><br /><center>
-	<table width="500" align="center" border="2" bordercolor="#999966">
-	<tr>
-		<td><br />
-		  <br />		  <br /></td>
-		<td colspan="3">
-		<center><img src="images/pedroantonioduran_eliminar_ficheros_carpeta_php-300x300.png" />
-		<br /></td>
-		<td><br />
-		  <center>		  &nbsp;<br />		  <br />
-		  <br />
-		  <center>		  &nbsp;<br />		  <br /></td>
-	</tr>
-	</table>
-	<table width="500" align="center" border="2" bordercolor="#999966">
-	<tr>
-	<td width="250"><center><a href="eliminarPersonal.php" >EMPLEADO</a></td>
-	<td width="250"><center><a href="eliminarEquipo.php" >EQUIPO</a></td>
-	</tr>
-	<tr>
-	<td></td>
-	<td></td>
-	
-	</tr>
-	<tr>
-	<td><center><a href="eliminarPiezas.php" >PIEZA</a></td>
-	<td><center><a href="eliminarodt.php" >ORDEN DE TRABAJO</a></td>
-	</tr>
-	</table>
-	</form>
                 </div>
                 <div class="cleared"></div>
                 </div>
