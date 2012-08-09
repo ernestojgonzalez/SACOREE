@@ -217,17 +217,16 @@ autoOpen: false,
 			<td><center>Cargo</td>
 			<td><center><input type="text" id="cargo" name="cargo" /></td>
 			<td><center>foto</td>
-			<td><center><input type="hidden" id="titulo" name="titulo" >     <input type="file" size="20" name="archivo" id="archivo"></td>
+			<td><center><input type="hidden" id="titulo" name="titulo" >     <input type="file" size="20" name="archivo" id="archivo" class="art-button-wrapper"></td>
 			
 	</tr>
 	</table>
 	
 	
-				
+	 			
 				
 				<br />
-				<input name="submit" type="submit" value="Guardar">
-				
+				<input name="submit" type="submit" value="Guardar" class="art-button-wrapper" >
 				</form>
 				</div>
 			</div>
@@ -254,7 +253,7 @@ autoOpen: false,
 			<td><center>Cantidad</td>
 			<td><center><input type="text" id="cantidad" name="cantidad" /></td>
 			<td><center>foto</td>
-			<td><center><input type="hidden" id="num_reg" name="num_reg" /><input type="hidden" id="titulo" name="titulo" /><input type="file" id="archivo" name="archivo" /></td>
+			<td><center><input type="hidden" id="num_reg" name="num_reg" /><input type="hidden" id="titulo" name="titulo" /><input type="file" id="archivo" name="archivo" class="art-button-wrapper"/></td>
 			
 	</tr>
 	</table>
@@ -263,7 +262,7 @@ autoOpen: false,
 				
 				
 				<br />
-				<input name="submit" type="submit" value="Guardar">
+				<input name="submit" type="submit" value="Guardar"class="art-button-wrapper">
 				
 				</form></div>
 			</div>
@@ -320,7 +319,7 @@ do {
 				
 				<br />
 				<input type="hidden" id="id_parte_pieza" name="id_parte_pieza">
-				<input name="submit" type="submit" value="Guardar">
+				<input name="submit" type="submit" value="Guardar" class="art-button-wrapper">
 				
 				</form></div>
 			</div>
@@ -386,7 +385,7 @@ do {
 				
 				<br />
 				<input type="hidden" id="id_odt" name="id_odt">
-				<input name="submit" type="submit" value="Guardar">
+				<input name="submit" type="submit" value="Guardar" class="art-button-wrapper">
 				
 				</form></div>
 			</div>

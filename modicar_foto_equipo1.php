@@ -95,10 +95,10 @@ $enlace =conectarbase();
  $nombre_archivo = $_FILES['archivo']['name'];
  $tipo_archivo = $_FILES['archivo']['type'];
  $tamano_archivo = $_FILES['archivo']['size'];
-//compruebo si las características del archivo son las que deseo
-if (!((strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000000)))
+//compruebo si las caracterï¿½sticas del archivo son las que deseo
+if (!((strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 100000000)))
 {
-   echo "<center>La extensión o el tamano de los foto no es correcta. <br><br>>Se permiten fotos con formato .jpg unicamente<br>";
+   echo "<center>La extensiï¿½n o el tamano de los foto no es correcta. <br><br>>Se permiten fotos unicamente<br>";
 }
 else 
 {
@@ -117,7 +117,7 @@ else
        mysql_close ($enlace);
    }else
     {
-      echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+      echo "Ocurriï¿½ algï¿½n error al subir el fichero. No pudo guardarse.";
     }
 }
 ?>
